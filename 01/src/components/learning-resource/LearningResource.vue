@@ -1,35 +1,39 @@
 <template>
   <li>
-    <div>
-      <header>
-        <h3>{{ title }}</h3>
-        <button>Delete</button>
-      </header>
-    </div>
-    <p>{{ description }}</p>
-    <nav>
-      <a :href="link">View Resource</a>
-    </nav>
+    <base-card>
+      <template v-slot:card>
+        <div>
+          <header>
+            <h3>{{ title }}</h3>
+            <button>Delete</button>
+          </header>
+        </div>
+        <p>{{ description }}</p>
+        <nav>
+          <a :href="link">View Resource</a>
+        </nav>
+      </template>
+    </base-card>
   </li>
 </template>
 
 <script>
 export default {
-//   props: ["description", "title", "link"],
-props: {
-    title : {
-        type:String,
-        required: true
+  //   props: ["description", "title", "link"],
+  props: {
+    title: {
+      type: String,
+      required: true,
     },
-    description : {
-        type:String,
-        required: true
+    description: {
+      type: String,
+      required: true,
     },
-    link : {
-        type:String,
-        required: true
+    link: {
+      type: String,
+      required: true,
     },
-}
+  },
 };
 </script>
 <style scoped>
