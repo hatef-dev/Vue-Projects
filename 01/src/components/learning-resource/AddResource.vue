@@ -1,5 +1,5 @@
 <template>
-  <base-dialog v-if="inputIsInvalid" title="Input is invalid">
+  <base-dialog @close="closeDialog" v-if="inputIsInvalid" title="Input is invalid">
     <template #default>
       <p>Unforturnately , you are gay and stupid, complate the inputs</p>
     </template>
@@ -28,7 +28,7 @@
           <input id="link" name="link" type="url" ref="link" />
         </div>
         <div class="form-control">
-          <base-button type="submit">Add Resources</base-button>
+          <base-button type="submit" @click="addResourcesToData">Add Resources</base-button>
         </div>
       </form>
     </template>
@@ -50,7 +50,7 @@ export default {
       if (
         titleValue.trim() == "" ||
         descriptionValue.trim() == "" ||
-        link.trim() == ""
+        linkValue.trim() == ""
       ) {
         this.inputIsInvalid = true;
         console.log("erorr");

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <dialog open>
+  <div @click="$emit('close')"></div>
+  <dialog open>
     <header>
       <slot name="header">
         <h2>{{ title }}</h2>
@@ -9,15 +9,15 @@
     <section>
       <slot></slot>
     </section>
-    <menu >
+    <menu>
       <slot name="actions"></slot>
     </menu>
   </dialog>
-  </div>
 </template>
 <script>
 export default {
   props: ["title"],
+  emits: ['close']
 };
 </script>
 <style scoped>
@@ -66,7 +66,6 @@ menu {
   justify-content: flex-end;
   margin: 0;
 }
-
 
 @media (min-width: 768px) {
   dialog {
