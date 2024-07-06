@@ -1,4 +1,12 @@
 <template>
+  <base-dialog v-if="inputIsInvalid" title="Input is invalid">
+    <template #default>
+      <p>Unforturnately , you are gay and stupid, complate the inputs</p>
+    </template>
+    <template #actions>
+      <base-button @click="closeDialog">Confirm</base-button>
+    </template>
+  </base-dialog>
   <base-card>
     <template v-slot:card>
       <form @submit.prevent="addResourcesToData">
@@ -28,13 +36,30 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      inputIsInvalid: null,
+    };
+  },
   inject: ["addResource"],
   methods: {
     addResourcesToData() {
       const titleValue = this.$refs.title.value;
       const descriptionValue = this.$refs.description.value;
       const linkValue = this.$refs.link.value;
+      if (
+        titleValue.trim() == "" ||
+        descriptionValue.trim() == "" ||
+        link.trim() == ""
+      ) {
+        this.inputIsInvalid = true;
+        console.log("erorr");
+        return;
+      }
       this.addResource(titleValue, descriptionValue, linkValue);
+    },
+    closeDialog() {
+      this.inputIsInvalid = false;
     },
   },
 };
