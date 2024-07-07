@@ -3,6 +3,7 @@
     <teams-item
       v-for="team in teams"
       :key="team.id"
+      :id="team.id"
       :name="team.name"
       :member-count="team.members.length"
     ></teams-item>
@@ -21,10 +22,10 @@ export default {
 </script>
 
 <style scoped>
-ul {
+ ul {
   list-style: none;
   margin: 2rem auto;
   max-width: 40rem;
   padding: 0;
-}
+} 
 </style>
